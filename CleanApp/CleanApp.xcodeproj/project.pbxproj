@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC85715628BDBA5300E496C6 /* Domain.docc in Sources */ = {isa = PBXBuildFile; fileRef = AC85715528BDBA5300E496C6 /* Domain.docc */; };
-		AC85715728BDBA5300E496C6 /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = AC85715428BDBA5300E496C6 /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AC85715C28BDBC8D00E496C6 /* AddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85715B28BDBC8D00E496C6 /* AddAccount.swift */; };
+		AC85715E28BDBDE500E496C6 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85715D28BDBDE500E496C6 /* AccountModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AC85713D28BDB96A00E496C6 /* CleanAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC85715228BDBA5300E496C6 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC85715428BDBA5300E496C6 /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
-		AC85715528BDBA5300E496C6 /* Domain.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Domain.docc; sourceTree = "<group>"; };
+		AC85715B28BDBC8D00E496C6 /* AddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccount.swift; sourceTree = "<group>"; };
+		AC85715D28BDBDE500E496C6 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +56,8 @@
 		AC85715328BDBA5300E496C6 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				AC85715428BDBA5300E496C6 /* Domain.h */,
-				AC85715528BDBA5300E496C6 /* Domain.docc */,
+				AC85715B28BDBC8D00E496C6 /* AddAccount.swift */,
+				AC85715D28BDBDE500E496C6 /* AccountModel.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -69,7 +69,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC85715728BDBA5300E496C6 /* Domain.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +176,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC85715628BDBA5300E496C6 /* Domain.docc in Sources */,
+				AC85715E28BDBDE500E496C6 /* AccountModel.swift in Sources */,
+				AC85715C28BDBC8D00E496C6 /* AddAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
