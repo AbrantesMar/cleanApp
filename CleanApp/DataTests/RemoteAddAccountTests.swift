@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Domain
 
 class RemoteAddAccount {
     
@@ -17,7 +18,7 @@ class RemoteAddAccount {
         self.httpClient = httpClient
     }
     
-    func add() {
+    func add(addAccountModel: AddAccountModel) {
         httpClient.post(url: url)
     }
 }
@@ -32,13 +33,20 @@ protocol HttpGetClient {
 
 class RemoteAddAccountTests: XCTestCase {
 
-
     func test_add_should_call_httpClient_with_correct_url() {
         let url = URL(string: "https://any-url.com")!
         let httpClientSpy = HttpClientSpy()
         let remoteAddAccount = RemoteAddAccount(url: url, httpClient: httpClientSpy)
         remoteAddAccount.add()
         XCTAssertEqual(httpClientSpy.url, url)
+    }
+    
+    func test_add_should_call_httpClient_with_correct_url() {
+        let url = URL(string: "https://any-url.com")!
+        let httpClientSpy = HttpClientSpy()
+        let remoteAddAccount = RemoteAddAccount(url: url, httpClient: httpClientSpy)
+        remoteAddAccount.add()
+        XCTAssertEqual(httpClientSpy.data, data)
     }
 
 }
