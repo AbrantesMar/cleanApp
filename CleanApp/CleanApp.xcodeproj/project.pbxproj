@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AC6DF20828BF2C9500975989 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DF20728BF2C9500975989 /* Model.swift */; };
+		AC6DF20A28BF2E1600975989 /* RemoteAddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DF20928BF2E1600975989 /* RemoteAddAccount.swift */; };
+		AC6DF20C28BF2E9900975989 /* HttpPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DF20B28BF2E9900975989 /* HttpPostClient.swift */; };
 		AC85715C28BDBC8D00E496C6 /* AddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85715B28BDBC8D00E496C6 /* AddAccount.swift */; };
 		AC85715E28BDBDE500E496C6 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85715D28BDBDE500E496C6 /* AccountModel.swift */; };
 		AC85716C28BDBF4000E496C6 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC85716428BDBF4000E496C6 /* Data.framework */; };
@@ -49,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		AC6DF20728BF2C9500975989 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		AC6DF20928BF2E1600975989 /* RemoteAddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccount.swift; sourceTree = "<group>"; };
+		AC6DF20B28BF2E9900975989 /* HttpPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPostClient.swift; sourceTree = "<group>"; };
 		AC85713D28BDB96A00E496C6 /* CleanAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC85715228BDBA5300E496C6 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC85715B28BDBC8D00E496C6 /* AddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccount.swift; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 		AC85716528BDBF4000E496C6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				AC6DF20928BF2E1600975989 /* RemoteAddAccount.swift */,
+				AC6DF20B28BF2E9900975989 /* HttpPostClient.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 					};
 					AC85716328BDBF4000E496C6 = {
 						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1310;
 					};
 					AC85716A28BDBF4000E496C6 = {
 						CreatedOnToolsVersion = 13.1;
@@ -337,6 +344,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC6DF20C28BF2E9900975989 /* HttpPostClient.swift in Sources */,
+				AC6DF20A28BF2E1600975989 /* RemoteAddAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +600,7 @@
 		AC85717428BDBF4000E496C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -614,6 +624,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -621,6 +632,7 @@
 		AC85717528BDBF4000E496C6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -651,6 +663,7 @@
 		AC85717728BDBF4000E496C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -674,6 +687,7 @@
 		AC85717828BDBF4000E496C6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
