@@ -96,6 +96,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC6DF20D28BF2F9800975989 /* UserCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserCases;
+			sourceTree = "<group>";
+		};
+		AC6DF20E28BF2FAF00975989 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AC85715D28BDBDE500E496C6 /* AccountModel.swift */,
+				AC6DF20728BF2C9500975989 /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AC6DF20F28BF2FDA00975989 /* UserCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserCases;
+			sourceTree = "<group>";
+		};
+		AC6DF21028BF2FEC00975989 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		AC6DF21128BF301500975989 /* UserCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserCases;
+			sourceTree = "<group>";
+		};
 		AC85712928BDB96A00E496C6 = {
 			isa = PBXGroup;
 			children = (
@@ -121,9 +158,9 @@
 		AC85715328BDBA5300E496C6 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				AC6DF20D28BF2F9800975989 /* UserCases */,
 				AC85715B28BDBC8D00E496C6 /* AddAccount.swift */,
-				AC85715D28BDBDE500E496C6 /* AccountModel.swift */,
-				AC6DF20728BF2C9500975989 /* Model.swift */,
+				AC6DF20E28BF2FAF00975989 /* Models */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -131,7 +168,9 @@
 		AC85716528BDBF4000E496C6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				AC6DF21028BF2FEC00975989 /* Http */,
 				AC6DF20928BF2E1600975989 /* RemoteAddAccount.swift */,
+				AC6DF20F28BF2FDA00975989 /* UserCases */,
 				AC6DF20B28BF2E9900975989 /* HttpPostClient.swift */,
 			);
 			path = Data;
@@ -140,6 +179,7 @@
 		AC85716F28BDBF4000E496C6 /* DataTests */ = {
 			isa = PBXGroup;
 			children = (
+				AC6DF21128BF301500975989 /* UserCases */,
 				AC85717028BDBF4000E496C6 /* RemoteAddAccountTests.swift */,
 			);
 			path = DataTests;
