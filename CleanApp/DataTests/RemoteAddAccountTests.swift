@@ -19,12 +19,13 @@ class RemoteAddAccount {
     }
     
     func add(addAccountModel: AddAccountModel) {
-        httpClient.post(url: url)
+        let data = try? JSONEncoder().encode(addAccountModel)
+        httpClient.post(to: url, with: data)
     }
 }
 
 protocol HttpPostClient {
-    func post(url: URL)
+    func post(to url: URL, with data: Data?)
 }
 
 protocol HttpGetClient {
@@ -37,15 +38,18 @@ class RemoteAddAccountTests: XCTestCase {
         let url = URL(string: "https://any-url.com")!
         let httpClientSpy = HttpClientSpy()
         let remoteAddAccount = RemoteAddAccount(url: url, httpClient: httpClientSpy)
-        remoteAddAccount.add()
+        let accountModel = AddAccountModel(name: "any_name", email: "any_email@email.com", password: "äny_password", passwordConfirmation: "äny_password")
+        remoteAddAccount.add(addAccountModel: accountModel)
         XCTAssertEqual(httpClientSpy.url, url)
     }
     
-    func test_add_should_call_httpClient_with_correct_url() {
+    func test_add_should_call_httpClient_with_correct_data() {
         let url = URL(string: "https://any-url.com")!
         let httpClientSpy = HttpClientSpy()
         let remoteAddAccount = RemoteAddAccount(url: url, httpClient: httpClientSpy)
-        remoteAddAccount.add()
+        let accountModel = AddAccountModel(name: "any_name", email: "any_email@email.com", password: "äny_password", passwordConfirmation: "äny_password")
+        remoteAddAccount.add(addAccountModel: accountModel)
+        let data = try? JSONEncoder().encode(accountModel)
         XCTAssertEqual(httpClientSpy.data, data)
     }
 
@@ -54,13 +58,15 @@ class RemoteAddAccountTests: XCTestCase {
 extension RemoteAddAccountTests {
     class HttpClientSpy: HttpPostClient, HttpGetClient {
         var url: URL?
+        var data: Data?
         
-        func post(url: URL) {
-            self.post(url: url)
+        func post(to url: URL, with data: Data?) {
+            self.url = url
+            self.data = data
         }
         
         func get(url: URL) {
-            <#code#>
+            return
         }
     }
 }
