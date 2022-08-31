@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC6DF20828BF2C9500975989 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DF20728BF2C9500975989 /* Model.swift */; };
 		AC85715C28BDBC8D00E496C6 /* AddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85715B28BDBC8D00E496C6 /* AddAccount.swift */; };
 		AC85715E28BDBDE500E496C6 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85715D28BDBDE500E496C6 /* AccountModel.swift */; };
 		AC85716C28BDBF4000E496C6 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC85716428BDBF4000E496C6 /* Data.framework */; };
@@ -47,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AC6DF20728BF2C9500975989 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		AC85713D28BDB96A00E496C6 /* CleanAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC85715228BDBA5300E496C6 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC85715B28BDBC8D00E496C6 /* AddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccount.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				AC85715B28BDBC8D00E496C6 /* AddAccount.swift */,
 				AC85715D28BDBDE500E496C6 /* AccountModel.swift */,
+				AC6DF20728BF2C9500975989 /* Model.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC6DF20828BF2C9500975989 /* Model.swift in Sources */,
 				AC85715E28BDBDE500E496C6 /* AccountModel.swift in Sources */,
 				AC85715C28BDBC8D00E496C6 /* AddAccount.swift in Sources */,
 			);
