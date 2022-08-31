@@ -2,7 +2,7 @@
 //  CleanApp.h
 //  CleanApp
 //
-//  Created by Marcio Henrique Nunes Abrantes on 30/08/22.
+//  Created by Marcio Abrantes on 30/08/22.
 //
 
 #import <Foundation/Foundation.h>
