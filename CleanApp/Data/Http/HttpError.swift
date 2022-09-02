@@ -2,7 +2,7 @@
 //  HttpError.swift
 //  Data
 //
-//  Created by Marcio Henrique Nunes Abrantes on 31/08/22.
+//  Created by Marcio Abrantes on 31/08/22.
 //
 
 import Foundation
