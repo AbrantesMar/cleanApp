@@ -121,6 +121,7 @@
 		AC6DF20F28BF2FDA00975989 /* UserCases */ = {
 			isa = PBXGroup;
 			children = (
+				AC6DF20928BF2E1600975989 /* RemoteAddAccount.swift */,
 			);
 			path = UserCases;
 			sourceTree = "<group>";
@@ -187,7 +188,6 @@
 			children = (
 				ACB0E2AA28C1B52D00C2B2BB /* Helpers */,
 				AC6DF21028BF2FEC00975989 /* Http */,
-				AC6DF20928BF2E1600975989 /* RemoteAddAccount.swift */,
 				AC6DF20F28BF2FDA00975989 /* UserCases */,
 			);
 			path = Data;
