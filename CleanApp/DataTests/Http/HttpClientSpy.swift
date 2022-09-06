@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Data
 
 class HttpClientSpy: HttpPostClient {
     var urls = [URL]()
