@@ -16,12 +16,12 @@ class AlamofireAdapter {
     }
     
     func post(to url: URL) {
-        
+        session.request(url, method: .post).resume()
     }
 }
 
 class AlamofireAdapterTests: XCTestCase {
-    func test_() {
+    func test_post_should_make_request_with_valid_url_and_method() {
         let url = makeUrl()
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [UrlProtocolStub.self]
@@ -30,13 +30,11 @@ class AlamofireAdapterTests: XCTestCase {
         sut.post(to: url)
         let exp = expectation(description: "waiting")
         UrlProtocolStub.observeRequest { request in
-            //print("cheguei aqui")
             XCTAssertEqual(url, request.url)
-            //print("url na mão")
-            //XCTAssertEqual("POST", request.httpMethod)
+            XCTAssertEqual("POST", request.httpMethod)
             exp.fulfill()
         }
-        wait(for: [exp], timeout: 1)
+        wait(for: [exp], timeout: 30)
     }
 }
 
