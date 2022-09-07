@@ -2,7 +2,7 @@
 //  Infra.h
 //  Infra
 //
-//  Created by Marcio Henrique Nunes Abrantes on 02/09/22.
+//  Created by Marcio Abrantes on 02/09/22.
 //
 
 #import <Foundation/Foundation.h>

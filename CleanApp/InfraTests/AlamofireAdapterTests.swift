@@ -16,7 +16,7 @@ class AlamofireAdapter {
     }
     
     func post(to url: URL, with data: Data?) {
-        let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
+        let json = data == nil ? nil : try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
         session.request(url, method: .post, parameters: json, encoding: JSONEncoding.default).resume()
     }
 }
@@ -24,19 +24,40 @@ class AlamofireAdapter {
 class AlamofireAdapterTests: XCTestCase {
     func test_post_should_make_request_with_valid_url_and_method() {
         let url = makeUrl()
+        
+        testRequestFor(url: url, data: makeValidData()) { request in
+            XCTAssertEqual(url, request.url)
+            XCTAssertEqual("POST", request.httpMethod)
+            XCTAssertNotNil(request.httpBodyStream)
+        }
+    }
+    
+    func test_post_should_make_request_with_low_data() {
+        testRequestFor(data: nil) { request in
+            XCTAssertNil(request.httpBodyStream)
+        }
+    }
+}
+
+extension AlamofireAdapterTests {
+    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> AlamofireAdapter {
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [UrlProtocolStub.self]
         let session = Session(configuration: configuration)
         let sut = AlamofireAdapter(session: session)
-        sut.post(to: url, with: makeValidData())
+        checkMemoryLeak(for: sut, file: file, line: line)
+        return sut
+    }
+    
+    func testRequestFor(url: URL = makeUrl(), data: Data?, action: @escaping (URLRequest) -> Void) {
+        let sut = makeSut()
+        sut.post(to: url, with: data ?? nil)
         let exp = expectation(description: "waiting")
         UrlProtocolStub.observeRequest { request in
-            XCTAssertEqual(url, request.url)
-            XCTAssertEqual("POST", request.httpMethod)
-            XCTAssertNotNil(request.httpBodyStream)
+            action(request)
             exp.fulfill()
         }
-        wait(for: [exp], timeout: 30)
+        wait(for: [exp], timeout: 1)
     }
 }
 
