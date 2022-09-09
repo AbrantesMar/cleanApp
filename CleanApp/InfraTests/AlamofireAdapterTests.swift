@@ -6,8 +6,8 @@
 //
 
 import XCTest
-import Alamofire
 import Data
+import Alamofire
 
 class AlamofireAdapter {
     private let session: Session
@@ -16,9 +16,14 @@ class AlamofireAdapter {
         self.session = session
     }
     
-    func post(to url: URL, with data: Data?) {
-        let json = data?.toJson()
-        session.request(url, method: .post, parameters: json, encoding: JSONEncoding.default).resume()
+    func post(to url: URL, with data: Data?, completion: @escaping (Result<Data, HttpError>) -> Void) {
+
+        session.request(url, method: .post, parameters: data?.toJson(), encoding: JSONEncoding.default).responseData { dataResponse in
+            switch dataResponse.result {
+            case .success: break
+            case .failure: completion(.failure(.noConnectivity))
+            }
+        }
     }
 }
 
@@ -38,6 +43,11 @@ class AlamofireAdapterTests: XCTestCase {
             XCTAssertNil(request.httpBodyStream)
         }
     }
+    
+    func test_post_should_complete_with_error_when_request_completes_with_error() {
+        expectResult(.failure(.noConnectivity), when: (data: nil, response: nil, error: makeError()))
+        
+    }
 }
 
 extension AlamofireAdapterTests {
@@ -52,10 +62,24 @@ extension AlamofireAdapterTests {
     
     func testRequestFor(url: URL = makeUrl(), data: Data?, action: @escaping (URLRequest) -> Void) {
         let sut = makeSut()
-        sut.post(to: url, with: data ?? nil)
         let exp = expectation(description: "waiting")
-        UrlProtocolStub.observeRequest { request in
-            action(request)
+        sut.post(to: url, with: data ?? nil) { _ in exp.fulfill() }
+        var request: URLRequest?
+        UrlProtocolStub.observeRequest { request = $0 }
+        wait(for: [exp], timeout: 1)
+        action(request!)
+    }
+
+    func expectResult(_ expectedResult: Result<Data, HttpError>, when stub: (data: Data?, response: HTTPURLResponse?, error: Error?), file: StaticString = #filePath, line: UInt = #line) {
+        let sut = makeSut()
+        UrlProtocolStub.simulate(data: stub.data, response: stub.response, error: stub.error)
+        let exp = expectation(description: "waiting")
+        sut.post(to: makeUrl(), with: makeValidData()) { receivedResult in
+            switch (expectedResult, receivedResult) {
+            case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError, file: file, line: line)
+            case (.success(let expectationData), .success(let receivedData)): XCTAssertEqual(expectationData, receivedData, file: file, line: line)
+            default: XCTFail("Expected error \(expectedResult) got \(receivedResult) instead")
+            }
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1)
@@ -64,9 +88,18 @@ extension AlamofireAdapterTests {
 
 class UrlProtocolStub: URLProtocol {
     static var emit: ((URLRequest) -> Void)?
+    static var data: Data?
+    static var response: HTTPURLResponse?
+    static var error: Error?
     
     static func observeRequest(completion: @escaping (URLRequest) -> Void) {
         UrlProtocolStub.emit = completion
+    }
+    
+    static func simulate(data: Data?, response: HTTPURLResponse?, error: Error?) {
+        UrlProtocolStub.data = data
+        UrlProtocolStub.response = response
+        UrlProtocolStub.error = error
     }
     
     override open class func canInit(with request: URLRequest) -> Bool {
@@ -78,6 +111,20 @@ class UrlProtocolStub: URLProtocol {
     }
     
     override open func startLoading() {
+        UrlProtocolStub.emit?(request)
+        if let data = UrlProtocolStub.data {
+            client?.urlProtocol(self, didLoad: data)
+        }
+        if let response = UrlProtocolStub.response {
+            client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+        }
+        if let error = UrlProtocolStub.error {
+            client?.urlProtocol(self, didFailWithError: error)
+        }
+        client?.urlProtocolDidFinishLoading(self)
+    }
+    
+    override open func stopLoading() {
         UrlProtocolStub.emit?(request)
     }
 }

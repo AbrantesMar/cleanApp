@@ -8,6 +8,7 @@
 import XCTest
 import Domain
 import Data
+import Infra
 
 class RemoteAddAccountTests: XCTestCase {
 
@@ -42,6 +43,7 @@ class RemoteAddAccountTests: XCTestCase {
     }
     
     func test_add_should_complete_with_error_if_client_completes_with_invalide_data() {
+        var t = testando.name = "teste"
         let (sut, httpClientSpy) = makeSut()
         expect(sut, completeWith: .failure(.unexpected), when: {
             httpClientSpy.completionWithData(makeInvalidData())

@@ -90,6 +90,7 @@ fastlane/test_output
 iOSInjectionProject/
 
 CleanApp/Podfile.lock
+CleanApp/Pods/*
 **/Pods/*
 !**/Pods/SentryInfo.plist
 **/Podfile.lock
